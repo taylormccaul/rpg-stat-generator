@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<!--Started 9/21/19 | Finished 9/22/19-->
+<html lang="en">
+    <head>
+        <title>RPG Character Stat Generator</title>
+        
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link href='https://fonts.googleapis.com/css?family=Oswald|Montserrat|Press+Start+2P|Cute+Font|Megrim|Monoton|Righteous|UnifrakturMaguntia&display=swap' rel='stylesheet'>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="RPGStatGenerator.css"> 
+        <!--Separate JS!-->
+    </head>
+    <body>
+        <div class="generator">
+            <div class="row">
+                <div class="container-fluid" id="title"><h1>RPG Character Stat Generator</h1></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-7" id="img-div">
+                    <h2 id="class-title">Class:</h2>
+                    <img src="rpgwallpaper3.jpg" id="summoner-img">
+                    <img src="rpgwallpaper4.jpg" id="warrior-img">
+                    <img src="rpgwallpaper5.jpg" id="paladin-img">
+                    <img src="rpgwallpaper6.jpg" id="archer-img">
+                    <img src="rpgwallpaper7.jpg" id="rogue-img">
+                    <img src="rpgwallpaper8.jpg" id="healer-img">
+                    <h3 id="class-name"></h3>
+                </div>
+                <div class="col-sm-5" id="hm-points">
+                    <h2 id="health-points">Health Points:</h2>
+                    <h3 id="hnum"></h3>
+                    <h2 id="magic-points">Magic Points:</h2>
+                    <h3 id="mnum"></h3>
+                    <h3>Strength</h3>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" id="str-bar"></div>
+                    </div>
+                    <h3>Dexterity</h3>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" id="dex-bar"></div>
+                    </div>
+                    <h3>Intelligence</h3>
+                    <div class="progress fluid-progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" id="int-bar"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6" id="const-div">
+                    <h3>Constitution</h3>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" id="const-bar"></div>
+                    </div>
+                </div>
+                <div class="col-sm-6" id="char-div">
+                    <h3>Charisma</h3>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" id="char-bar"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="container-fluid" id="wisdom-div">
+                    <h3>Wisdom</h3>
+                    <div class="progress fluid-progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" id="wisdom-bar"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4" id="cunning-div">
+                    <h3>Cunning</h3>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" id="cunning-bar"></div>
+                    </div>
+                </div>
+                <div class="col-sm-4" id="per-div">
+                    <h3>Perception</h3>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" id="per-bar"></div>
+                    </div>
+                </div>
+                <div class="col-sm-4" id="end-div">
+                    <h3>Endurance</h3>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" id="end-bar"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            var max = 100;
+            var min = 1;
+
+            var classMax = 6;
+            var classMin = 1;
+
+            var className = document.getElementById('class-name');
+
+            var hPoints = document.getElementById('hnum');
+            var mPoints = document.getElementById('mnum');
+
+            var healthChoice = Math.floor(Math.random() * (max - min)) + min;
+            var magicChoice = Math.floor(Math.random() * (max - min)) + min;
+
+            mPoints.innerHTML = `${magicChoice} / 100`;
+            hPoints.innerHTML = `${healthChoice} / 100`;
+
+            const summonerImg = document.getElementById('summoner-img');
+            const warriorImg = document.getElementById('warrior-img');
+            const paladinImg = document.getElementById('paladin-img');
+            const archerImg = document.getElementById('archer-img');
+            const rogueImg = document.getElementById('rogue-img');
+            const healerImg = document.getElementById('healer-img');
+
+            var strWidth = Math.floor(Math.random() * (max - min)) + min;
+            var dexWidth = Math.floor(Math.random() * (max - min)) + min;
+            var intWidth = Math.floor(Math.random() * (max - min)) + min;
+            var constWidth = Math.floor(Math.random() * (max - min)) + min;
+            var charWidth = Math.floor(Math.random() * (max - min)) + min;
+            var wisdomWidth = Math.floor(Math.random() * (max - min)) + min;
+            var cunningWidth = Math.floor(Math.random() * (max - min) + min);
+            var perWidth = Math.floor(Math.random() * (max - min) + min);
+            var endWidth = Math.floor(Math.random() * (max - min) + min);
+
+            var classChoice = Math.floor(Math.random() * (classMax - classMin)) + classMin;
+
+            if (classChoice == 1) {
+                summonerImg.style.display = "block";
+                className.innerHTML = "Summoner";
+            } else if (classChoice == 2) {
+                warriorImg.style.display = "block";
+                className.innerHTML = "Warrior";
+            } else if (classChoice == 3) {
+                paladinImg.style.display = "block";
+                className.innerHTML = "Paladin";
+            } else if (classChoice == 4) {
+                archerImg.style.display = "block";
+                className.innerHTML = "Archer";
+            } else if (classChoice == 5) {
+                rogueImg.style.display = "block";
+                className.innerHTML = "Rogue";
+            } else {
+                healerImg.style.display = "block";
+                className.innerHTML = "Healer";
+            }
+
+            var strBar = document.getElementById('str-bar');
+            var dexBar = document.getElementById('dex-bar');
+            var intBar = document.getElementById('int-bar');
+            var constBar = document.getElementById('const-bar');
+            var charBar = document.getElementById('char-bar');
+            var wisdomBar = document.getElementById('wisdom-bar');
+            var cunningBar = document.getElementById('cunning-bar');
+            var perBar = document.getElementById('per-bar');
+            var endBar = document.getElementById('end-bar');
+
+            strBar.style.width = strWidth + '%';
+            dexBar.style.width = dexWidth + '%';
+            intBar.style.width = intWidth + '%';
+            constBar.style.width = constWidth + '%';
+            charBar.style.width = charWidth + '%';
+            wisdomBar.style.width = wisdomWidth + '%';
+            cunningBar.style.width = cunningWidth + '%';
+            perBar.style.width = perWidth + '%';
+            endBar.style.width = endWidth + '%';
+
+            strBar.innerHTML = strWidth + '%';
+            dexBar.innerHTML = dexWidth + '%';
+            intBar.innerHTML = intWidth + '%';
+            constBar.innerHTML = constWidth + '%';
+            charBar.innerHTML = charWidth + '%';
+            wisdomBar.innerHTML = wisdomWidth + '%';
+            cunningBar.innerHTML = cunningWidth + '%';
+            perBar.innerHTML = perWidth + '%';
+            endBar.innerHTML = endWidth + '%';
+        </script>
+    </body>
+</html>
